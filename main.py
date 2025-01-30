@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import streamlit as st
 
 st.title("Simple Data(csv) Analysis")
@@ -25,3 +24,13 @@ if file is not None:
     
     filtered_df = df[df[selected_column] == selected_value]
     st.write(filtered_df)
+    
+    st.subheader("Data visualization:")
+    x_axis = st.selectbox("select x-axis for plot:", columns)
+    y_axis = st.selectbox("select y-axis for plot:", columns)
+    
+    if st.button("Generate plot"):
+        st.line_chart(filtered_df.set_index(x_axis)[y_axis])
+
+else:
+    st.write("Waiting for upload a file...")

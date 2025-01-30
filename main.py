@@ -8,3 +8,11 @@ file = st.file_uploader("Choose your csv file", type=["csv", 'tsv'])
 
 if file is not None:
     st.write("File uploaded successfully...🎉")
+    
+    df = pd.read_csv(file)
+    
+    st.subheader("Data Preview:")
+    st.write(df.head())
+    
+    st.subheader("summary of the data:")
+    st.write(df.describe())

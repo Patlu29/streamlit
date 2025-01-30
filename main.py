@@ -16,3 +16,12 @@ if file is not None:
     
     st.subheader("summary of the data:")
     st.write(df.describe())
+    
+    st.subheader("Filter data:")
+    columns = df.columns.tolist()
+    selected_column = st.selectbox("select column:", columns)
+    unique_values = df[selected_column].unique()
+    selected_value = st.selectbox("select value:", unique_values)
+    
+    filtered_df = df[df[selected_column] == selected_value]
+    st.write(filtered_df)
